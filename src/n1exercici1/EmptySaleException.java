@@ -1,8 +1,8 @@
 package n1exercici1;
 
-public class EmptySaleException extends RuntimeException {
-    public EmptySaleException(String message) {
-        super(message);
+public class EmptySaleException extends Exception {
+    public EmptySaleException() {
+        super("Per fer una venda primer has d’afegir productes");
     }
 
 }

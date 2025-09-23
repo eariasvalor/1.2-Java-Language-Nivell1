@@ -6,7 +6,7 @@ public class Sale {
     private ArrayList<Product> products;
     private double totalPrice;
 
-    public Sale(double totalPrice){
+    public Sale(){
         this.totalPrice = totalPrice;
         this.products = new ArrayList<Product>();
     }
@@ -15,16 +15,20 @@ public class Sale {
         return products;
     }
 
+    public double getTotalPrice(){
+        return this.totalPrice;
+    }
+
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
 
-    public void calculateTotal(){
+    public void calculateTotal() throws EmptySaleException {
 
         if (products.isEmpty()) {
-            throw new EmptySaleException("Per fer una venda primer has d’afegir productes.");
+            throw new EmptySaleException();
         }
-
+        totalPrice = 0;
         for(Product p : products){
             totalPrice += p.getPrice();
         }
