@@ -3,12 +3,12 @@ package n1exercici1;
 public class N1Exercici1 {
     public static void main (String[] args){
         Sale sale = new Sale();
-       try{
-           sale.calculateTotal();
-           System.out.println("Total: " + sale.getTotalPrice());
-       } catch (EmptySaleException e) {
-           System.out.println(e.getMessage());
-       }
+        try{
+            sale.calculateTotal();
+            System.out.println("Total: " + sale.getTotalPrice());
+        } catch (EmptySaleException e) {
+            System.out.println(e.getMessage());
+        }
 
 
 
