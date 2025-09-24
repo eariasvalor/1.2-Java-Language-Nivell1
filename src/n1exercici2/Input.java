@@ -12,12 +12,13 @@ public class Input {
 
         while (!correct) {
             try{
-                System.out.println(message + ": ");
+                System.out.println(message);
                 value = scanner.nextByte();
                 correct = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error de format.");
-
+            } finally {
+                scanner.nextLine();
             }
         }
         return value;
@@ -29,17 +30,21 @@ public class Input {
 
         while (!correct) {
             try {
-                System.out.println(message + ": ");
+                System.out.println(message);
                 value = scanner.nextInt();
                 correct = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error de format");
                 scanner.nextLine();
             }
+
         }
 
         return value;
     }
+
+
+
 
     public static float readFloat(String message) {
         float value = 0.0F;
@@ -47,7 +52,7 @@ public class Input {
 
         while (!correct) {
             try {
-                System.out.println(message + ": ");
+                System.out.println(message);
                 value = scanner.nextFloat();
                 correct = true;
             } catch (InputMismatchException e) {
@@ -65,11 +70,13 @@ public class Input {
 
         while (!correct) {
             try {
-                System.out.println(message + ": ");
+                System.out.println(message);
                 value = scanner.nextDouble();
                 correct = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error de format");
+                scanner.nextLine();
+            } finally {
                 scanner.nextLine();
             }
         }
@@ -83,18 +90,14 @@ public class Input {
         boolean correct = false;
 
         while (!correct) {
-            System.out.println(message + ": ");
+            System.out.println(message);
             input = scanner.nextLine().trim();
 
-            try {
-                if (input.length() != 1) {
-                    throw new CustomException("Has d'introduir un sol caràcter.");
-                }
-                value = input.charAt(0);
-                correct = true;
-            } catch (CustomException e) {
-                System.out.println(e.getMessage());
+            if (input.length() != 1) {
+                throw new CustomException("Has d'introduir un sol caràcter.");
             }
+            value = input.charAt(0);
+            correct = true;
 
             }
 
@@ -107,18 +110,15 @@ public class Input {
         boolean correct = false;
 
         while(!correct) {
-            System.out.println(message + ": ");
+            System.out.println(message);
             input = scanner.nextLine();
 
-            try {
-                if(input.isEmpty()) {
-                    throw new CustomException("La teva resposta no pot estar buida");
-                }
-                value = scanner.nextLine();
-                correct = true;
-            } catch (CustomException e) {
-                System.out.println(e.getMessage());
+            if(input.isEmpty()) {
+                throw new CustomException("La teva resposta no pot estar buida");
             }
+            value = input;
+            correct = true;
+
         }
         return value;
 
@@ -131,15 +131,19 @@ public class Input {
         char answer = ' ';
 
         while (!correct) {
-            System.out.println(message + ": ");
+            System.out.println(message);
             input = scanner.nextLine().trim();
 
             try {
-                if (input.length() != 1) {
+                if (input.equalsIgnoreCase("s") || input.equalsIgnoreCase("n")) {
                     throw new CustomException("Has d'introduir només s o n.");
                 }
                 answer = input.charAt(0);
-                value = (answer == 's') ? true : false;
+                if (answer == 's') {
+                    value = true;
+                } else if (answer == 'n') {
+                    value = false;
+                }
                 correct = true;
             } catch (CustomException e) {
                 System.out.println(e.getMessage());
@@ -152,4 +156,4 @@ public class Input {
     }
 
 
-}
+
