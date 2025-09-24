@@ -13,7 +13,7 @@ public class N1Exercici2 {
         boolean answer = false;
 
 
-        try {
+
             b = Input.readByte("Introdueix la teva edat.");
             System.out.println("Has introduït: " + b);
 
@@ -35,9 +35,7 @@ public class N1Exercici2 {
             answer = Input.readYesNo("Vius a Barcelona?\nRespon sí o no (s/n).");
             System.out.println("Has introduït: " + answer);
 
-        }   catch (CustomException e) {
-            System.out.println("S'ha produït un error: " + e.getMessage());
-            }
+
 
         System.out.println("Adeu!");
 

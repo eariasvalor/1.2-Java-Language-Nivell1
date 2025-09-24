@@ -82,7 +82,7 @@ public class Input {
         return value;
     }
 
-    public static char readChar(String message) throws CustomException {
+    public static char readChar(String message) {
         char value = ' ';
         String input = "";
         boolean correct = false;
@@ -106,7 +106,7 @@ public class Input {
         return value;
     }
 
-    public static String readString(String message) throws CustomException {
+    public static String readString(String message) {
         String value = "";
         String input = "";
         boolean correct = false;
@@ -131,7 +131,7 @@ public class Input {
 
     }
 
-    public static boolean readYesNo(String message) throws CustomException {
+    public static boolean readYesNo(String message) {
         boolean value = false;
         boolean correct = false;
         String input = "";
