@@ -134,10 +134,7 @@ public class Input {
             System.out.println(message);
             input = scanner.nextLine().trim();
 
-            try {
-                if (input.equalsIgnoreCase("s") || input.equalsIgnoreCase("n")) {
-                    throw new CustomException("Has d'introduir només s o n.");
-                }
+            if ((input.equalsIgnoreCase("s")) || (input.equalsIgnoreCase("n"))) {
                 answer = input.charAt(0);
                 if (answer == 's') {
                     value = true;
@@ -145,9 +142,11 @@ public class Input {
                     value = false;
                 }
                 correct = true;
-            } catch (CustomException e) {
-                System.out.println(e.getMessage());
+            } else {
+                throw new CustomException("Has d'introduir només s o n.");
             }
+
+
         }
 
         return value;
