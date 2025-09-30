@@ -1,18 +1,21 @@
 package n1exercici1;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Sale {
-    private ArrayList<Product> products;
+    private List<Product> products;
     private double totalPrice;
 
     public Sale(){
-        this.totalPrice = totalPrice;
+        this.totalPrice = 0;
         this.products = new ArrayList<Product>();
     }
 
-    public ArrayList<Product> getProducts() {
-        return products;
+    public List<Product> getProducts() {
+        return Collections.unmodifiableList(products);
     }
 
     public double getTotalPrice(){
@@ -23,15 +26,32 @@ public class Sale {
         this.products = products;
     }
 
-    public void calculateTotal() throws EmptySaleException {
+    public void addProduct(Product p) {
+        if(p == null) {
+            throw new IllegalArgumentException("The product cannot be null.");
+        }
+        products.add(p);
+    }
+
+    public void removeProduct(Product p) {
+        products.remove(p);
+    }
+
+    public void clearProducts() {
+        products.clear();
+    }
+
+    public BigDecimal calculateTotal() throws EmptySaleException {
 
         if (products.isEmpty()) {
             throw new EmptySaleException();
         }
-        totalPrice = 0;
+        BigDecimal totalPrice = BigDecimal.ZERO;
         for(Product p : products){
-            totalPrice += p.getPrice();
+            totalPrice = totalPrice.add(p.getPrice());
         }
+
+        return totalPrice;
 
     }
 

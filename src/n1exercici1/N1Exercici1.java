@@ -18,7 +18,7 @@ public class N1Exercici1 {
         try {
             russianName = names[4];
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }
