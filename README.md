@@ -45,16 +45,17 @@ A més, s’ha d’escriure el codi necessari per a generar i capturar una excep
 
 ▶️ Execució
 
-1. Compila el projecte:
-   javac *.java
-2. Executa la classe principal:
-   java N1Exercici1
+1. Compila els arxius Java (des de l’arrel del projecte):
+   mkdir -p out
+   javac -d out src/n1exercici1/*.java
+3. Executa la classe principal:
+   java -cp out n1exercici1.N1Exercici1
 
 🌐 Desplegament
 
 Per desplegar el projecte en un entorn de producció o servidor:
 1. Empaqueta el projecte en un .jar:
-   jar cfe n1exercici1.jar n1exercici1 *.class
+   jar --create --file n1exercici1.jar --main-class n1exercici1.N1Exercici1 -C out .
 2. Puja l’arxiu .jar al servidor.
 3. Executa’l amb:
    java -jar n1exercici1.jar
